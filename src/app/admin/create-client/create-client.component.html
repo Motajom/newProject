@@ -1,0 +1,158 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Personal Details</ng-template>
+      <mat-radio-group>
+        <mat-radio-button value="1">Individual Client</mat-radio-button>
+        <mat-radio-button value="2">Corporate Client</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <mat-form-field>
+        <mat-select placeholder="Direct Client?" formControlName="dClient" required>
+          <mat-option value="yes">
+            Yes
+          </mat-option>
+          <mat-option value="no">
+            No
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-select placeholder="Title" formControlName="title" required>
+          <mat-option value="mr">
+            Mr
+          </mat-option>
+          <mat-option value="mrs">
+            Mrs
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="First name" formControlName="oName" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Other Name" formControlName="oName" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last name" formControlName="lName" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-select placeholder="Admitted?" formControlName="admitted" required>
+          <mat-option value="Y">
+            Admitted
+          </mat-option>
+          <mat-option value="N">
+            Not Admitted
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Gender" formControlName="gender" required>
+          <mat-option value="male">
+            Male
+          </mat-option>
+          <mat-option value="female">
+            Female
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Date of Birth"(dateChange)="computeAge($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Age" formControlName="age"  [(ngModel)]="age" required readonly>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-select placeholder="Marital Status" formControlName="mStatus" required>
+          <mat-option value="married">
+            Married
+          </mat-option>
+          <mat-option value="single">
+            Single
+          </mat-option>
+          <mat-option value="widowed">
+            Widowed
+          </mat-option>
+          <mat-option value="divorced">
+            Divorced
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Occupation" formControlName="occupation" required>
+          <mat-option value="Others">
+            Others
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Nationality" formControlName="nationality" required>
+          <mat-option value="Others">
+            Others
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Occupation" formControlName="occupation" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Contact Details</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Staff and Account Details</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="thirdCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious type="button">Back</button>
+          <button mat-button matStepperNext type="button">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Other Details</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Address" formControlName="fourthCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        </form>
+      </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="submitt()">Submit</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
